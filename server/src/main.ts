@@ -1,7 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
-import { ValidationPipe } from "@nestjs/common";
+import { BadRequestException, ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -26,6 +26,19 @@ async function bootstrap() {
     new ValidationPipe({
       transform: true,
       stopAtFirstError: true,
+      exceptionFactory: (errors) => {
+        const error = errors[0];
+
+        if (!error.constraints) {
+          return new BadRequestException("Validation error");
+        }
+
+        const message =
+          Object.values(error.constraints)[0].charAt(0).toUpperCase() +
+          Object.values(error.constraints)[0].slice(1);
+
+        return new BadRequestException(message);
+      },
     }),
   );
 
