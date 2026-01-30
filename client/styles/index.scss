@@ -184,6 +184,7 @@ button {
 }
 
 .radio-group {
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -193,17 +194,20 @@ button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 .radio-item input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
+  padding: 0;
+  box-sizing: border-box;
   width: 18px;
   height: 18px;
   margin: 0;
   border-radius: 999px;
   border: 2px solid rgba(variables.$color-ui-text, 0.35);
-  background: rgba(255, 255, 255, 0.02);
+  background: variables.$color-ui-surface;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
@@ -222,7 +226,7 @@ button {
 .radio-item input[type="radio"]:checked {
   border-color: variables.$color-ui-primary;
   background: radial-gradient(circle at 50% 50%, variables.$color-ui-primary 0 4px, transparent 5px),
-    rgba(variables.$color-ui-primary, 0.12);
+    variables.$color-ui-surface;
 }
 
 .radio-item label {

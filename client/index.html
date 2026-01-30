@@ -137,6 +137,29 @@
           class="link-checker-form"
           autocomplete="off"
         >
+          <div class="radio-group">
+            <p>Select the type of check:</p>
+            <div class="radio-item">
+              <input
+                type="radio"
+                id="indexation"
+                name="check-type"
+                value="indexation"
+                checked
+              />
+              <label for="indexation">Indexation</label>
+            </div>
+
+            <div class="radio-item">
+              <input
+                type="radio"
+                id="semantics"
+                name="check-type"
+                value="semantics"
+              />
+              <label for="semantics">Semantics</label>
+            </div>
+          </div>
           <div class="input-group">
             <span
               class="input-group-icon"
@@ -168,28 +191,6 @@
             >
               Check link
             </button>
-          </div>
-          <div class="radio-group">
-            <div class="radio-item">
-              <input
-                type="radio"
-                id="indexation"
-                name="check-type"
-                value="indexation"
-                checked
-              />
-              <label for="indexation">Indexation</label>
-            </div>
-
-            <div class="radio-item">
-              <input
-                type="radio"
-                id="semantics"
-                name="check-type"
-                value="semantics"
-              />
-              <label for="semantics">Semantics</label>
-            </div>
           </div>
         </form>
         <span class="promt-block">
