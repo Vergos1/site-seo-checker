@@ -21,8 +21,10 @@ export class CheckLinkService {
   async getCheckHistory() {
     const history = await this.checkLinkHistoryRepository.find();
 
+    const reversedList = history.toReversed();
+
     return {
-      items: history,
+      items: reversedList,
       total: history.length,
       message: history.length > 0 ? "History found" : "No history yet",
     };

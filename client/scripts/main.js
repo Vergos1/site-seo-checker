@@ -37,7 +37,22 @@ function renderError(message) {
   form.appendChild(errorEl);
 }
 
-function renderHistoryRow(item) {
+function renderTableHeader() {
+  const header = document.createElement("div");
+  header.className = "table-header";
+
+  header.innerHTML = `
+      <div>ID</div>
+      <div>Date</div>
+      <div>Link</div>
+      <div>Score</div>
+      <div>Type</div>
+    `;
+
+  return header;
+}
+
+function renderHistoryRow(item, index) {
   const row = document.createElement("div");
   row.className = "table-row";
 
@@ -54,6 +69,20 @@ function renderHistoryRow(item) {
   return row;
 }
 
+function renderHistoryTable(items) {
+  resultSection.innerHTML = "";
+
+  const fragment = document.createDocumentFragment();
+
+  fragment.appendChild(renderTableHeader());
+
+  items.forEach((item) => {
+    fragment.appendChild(renderHistoryRow(item));
+  });
+
+  resultSection.appendChild(fragment);
+}
+
 async function renderHistory() {
   try {
     const response = await getChecksHistory();
@@ -62,10 +91,7 @@ async function renderHistory() {
       return;
     }
 
-    response.items.forEach((item) => {
-      const row = renderHistoryRow(item);
-      resultSection.appendChild(row);
-    });
+    renderHistoryTable(response.items);
   } catch (error) {
     console.error("History load error:", error);
   }
@@ -106,6 +132,7 @@ checkButton.addEventListener("click", async (e) => {
     const checkedType = [...radioButtons].find((i) => i.checked)?.value;
 
     const resultData = await checkLink(formInput.value, checkedType);
+    renderHistory();
   } catch (err) {
     const message = err?.response?.data?.message ?? "Something went wrong";
     renderError(message);
