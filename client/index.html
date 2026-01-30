@@ -133,13 +133,16 @@
           </div>
         </div>
         <form
-          id="cookieForm"
+          id="link-checker-form"
           class="link-checker-form"
           autocomplete="off"
         >
           <div class="radio-group">
             <p>Select the type of check:</p>
-            <div class="radio-item">
+            <label
+              class="radio-item"
+              for="indexation"
+            >
               <input
                 type="radio"
                 id="indexation"
@@ -147,18 +150,20 @@
                 value="indexation"
                 checked
               />
-              <label for="indexation">Indexation</label>
-            </div>
-
-            <div class="radio-item">
+              Indexation
+            </label>
+            <label
+              for="semantics"
+              class="radio-item"
+            >
               <input
                 type="radio"
                 id="semantics"
                 name="check-type"
                 value="semantics"
               />
-              <label for="semantics">Semantics</label>
-            </div>
+              Semantics
+            </label>
           </div>
           <div class="input-group">
             <span
@@ -178,7 +183,7 @@
 
             <input
               class="form-control"
-              id="url_to_scan"
+              id="check-input"
               name="url"
               type="text"
               placeholder="Enter your website URL"
@@ -187,12 +192,14 @@
             <button
               class="btn pri-xl-btn"
               type="submit"
-              id="scan_cookie"
+              disabled
+              id="check-button"
             >
               Check link
             </button>
           </div>
         </form>
+
         <span class="promt-block">
           <img
             src="./assets/icons/warn.svg"
@@ -202,7 +209,10 @@
           />
           <p>Unfortunately, some websites may fail verification due to their security measures.</p>
         </span>
-        <section class="result-section"></section>
+        <section
+          id="result"
+          class="result-section"
+        ></section>
       </section>
     </main>
 

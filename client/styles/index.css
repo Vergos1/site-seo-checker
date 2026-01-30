@@ -546,13 +546,22 @@ button:focus {
 }
 
 a,
-button:not(:disabled):not(.disabled),
+button:not(:disabled),
 button {
   cursor: pointer;
 }
 
 .link-checker-form {
   width: min(960px, 100% - 32px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .input-group {
@@ -665,14 +674,15 @@ button {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
 }
 
 .radio-item input[type=radio]:hover {
   border-color: rgba(37, 99, 235, 0.6);
+}
+
+.radio-item input[type=radio]:focus {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  outline: none;
 }
 
 .radio-item input[type=radio]:focus-visible {
@@ -694,6 +704,11 @@ button {
   color: #27283c;
 }
 
-.radio-item input[type=radio]:checked + label {
+.radio-item:has(input[type=radio]:checked) {
   color: #2563eb;
+}
+
+.form-error {
+  margin-top: 0.5rem;
+  color: #ef4444;
 }/*# sourceMappingURL=index.css.map */

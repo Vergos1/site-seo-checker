@@ -91,13 +91,22 @@ button:focus {
 }
 
 a,
-button:not(:disabled):not(.disabled),
+button:not(:disabled),
 button {
   cursor: pointer;
 }
+
 .link-checker-form {
   width: min(960px, calc(100% - 32px));
 }
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
 .input-group {
   width: 100%;
   height: 64px;
@@ -217,6 +226,11 @@ button {
   border-color: rgba(variables.$color-ui-primary, 0.6);
 }
 
+.radio-item input[type="radio"]:focus {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
 .radio-item input[type="radio"]:focus-visible {
   outline: none;
   border-color: variables.$color-ui-primary;
@@ -235,6 +249,11 @@ button {
   color: variables.$color-ui-text;
 }
 
-.radio-item input[type="radio"]:checked + label {
+.radio-item:has(input[type="radio"]:checked) {
   color: variables.$color-ui-primary;
+}
+
+.form-error {
+  margin-top: 0.5rem;
+  color: variables.$color-ui-error;
 }

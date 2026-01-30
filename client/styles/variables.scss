@@ -18,6 +18,8 @@ $color-white: #ffffff; // поверхность/карточки
 $color-gray-200: #e5e7eb; // бордер
 $color-gray-300: #d1d5db; // бордер сильнее
 
+$color-red-500: #ef4444; // ошибка
+
 /* ===== Semantic UI tokens (используй ЭТО в компонентах) ===== */
 $color-ui-bg: $color-slate-50;
 $color-ui-surface: $color-white;
@@ -31,3 +33,5 @@ $color-ui-border-strong: $color-gray-300;
 $color-ui-primary: $color-brand-600;
 $color-ui-primary-hover: $color-brand-700;
 $color-ui-primary-contrast: $color-white;
+
+$color-ui-error: $color-red-500;
