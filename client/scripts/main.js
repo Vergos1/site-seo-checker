@@ -4,7 +4,7 @@ import { checkLink, getChecksHistory } from "./api/checks/index.js";
 
 const formInput = document.getElementById("check-input");
 const checkButton = document.getElementById("check-button");
-const resultSection = document.getElementById("result");
+const resultSection = document.getElementById("result-table");
 const radioButtons = document.querySelectorAll("input[name='check-type']");
 const form = document.getElementById("link-checker-form");
 
@@ -35,6 +35,40 @@ function renderError(message) {
   errorEl.textContent = message;
 
   form.appendChild(errorEl);
+}
+
+function renderHistoryRow(item) {
+  const row = document.createElement("div");
+  row.className = "table-row";
+
+  const date = item.date ? new Date(item.date).toLocaleString() : "-";
+
+  row.innerHTML = `
+    <span>${item.id}</span>
+    <span>${date}</span>
+    <span class="link">${item.link}</span>
+    <span>${item.score}</span>
+    <span class="badge ${item.type}">${item.type}</span>
+  `;
+
+  return row;
+}
+
+async function renderHistory() {
+  try {
+    const response = await getChecksHistory();
+
+    if (!Array.isArray(response.items) || response.items.length === 0) {
+      return;
+    }
+
+    response.items.forEach((item) => {
+      const row = renderHistoryRow(item);
+      resultSection.appendChild(row);
+    });
+  } catch (error) {
+    console.error("History load error:", error);
+  }
 }
 
 setButtonState({
@@ -72,9 +106,6 @@ checkButton.addEventListener("click", async (e) => {
     const checkedType = [...radioButtons].find((i) => i.checked)?.value;
 
     const resultData = await checkLink(formInput.value, checkedType);
-    const historyData = await getChecksHistory();
-
-    console.log(resultData, historyData);
   } catch (err) {
     const message = err?.response?.data?.message ?? "Something went wrong";
     renderError(message);
@@ -85,3 +116,5 @@ checkButton.addEventListener("click", async (e) => {
     });
   }
 });
+
+await renderHistory();
