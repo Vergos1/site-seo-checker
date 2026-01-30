@@ -1,9 +1,7 @@
 import instance from "./client.js";
 
 function httpRequest(method, url, request) {
-  return instance[method](url, request)
-    .then((response) => response.data)
-    .catch((error) => error);
+  return instance[method](url, request).then((response) => response);
 }
 
 export const http = {

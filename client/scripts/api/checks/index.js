@@ -1,6 +1,6 @@
 import { http } from "../http.js";
 
-export const checkLink = async (link, type = "indexing") => {
+export const checkLink = async (link, type) => {
   const response = await http.post(`/check-link?${type}`, {
     link,
   });
