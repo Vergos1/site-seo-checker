@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Link Checker - Free Website Link Checker</title>
+    <meta
+      name="description"
+      content="Check your website's links and find out how it's performing."
+    />
+    <meta
+      name="keywords"
+      content="link checker, website link checker, free website link checker, website link checker tool, website link checker online, website link checker free, website link checker tool online, website link checker tool free"
+    />
+    <meta
+      name="author"
+      content="Ihor Yanchuk, ihoryanchuk199@gmail.com"
+    />
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+
+    <meta
+      property="og:title"
+      content="Link Checker - Free Website Link Checker"
+    />
+    <meta
+      property="og:description"
+      content="Check your website's links and find out how it's performing."
+    />
+    <meta
+      property="og:image"
+      content="https://linkchecker.com/og-image.png"
+    />
+    <meta
+      property="og:url"
+      content="https://linkchecker.com"
+    />
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:locale"
+      content="en_US"
+    />
+    <meta
+      property="og:site_name"
+      content="Link Checker"
+    />
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:title"
+      content="Link Checker - Free Website Link Checker"
+    />
+    <meta
+      name="twitter:description"
+      content="Check your website's links and find out how it's performing."
+    />
+    <meta
+      name="twitter:image"
+      content="https://linkchecker.com/og-image.png"
+    />
+    <meta
+      name="twitter:url"
+      content="https://linkchecker.com"
+    />
+    <meta
+      name="twitter:site"
+      content="@linkchecker"
+    />
+    <meta
+      name="twitter:creator"
+      content="@linkchecker"
+    />
+
+    <link
+      rel="canonical"
+      href="https://linkchecker.com"
+    />
+    <link
+      rel="icon"
+      href="https://linkchecker.com/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://linkchecker.com/apple-touch-icon.png"
+    />
+    <link
+      rel="manifest"
+      href="https://linkchecker.com/manifest.json"
+    />
+    <link
+      rel="sitemap"
+      href="https://linkchecker.com/sitemap.xml"
+    />
+
+    <link
+      rel="stylesheet"
+      href="styles/index.css"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main id="main">
+      <section class="content-section">
+        <div class="hero-content">
+          <h1>Free Website Link Checker</h1>
+          <div class="hero-description">
+            <p>Check your website's links and find out how it's performing.</p>
+            <p>Select the type of check — indexation or semantics.</p>
+            <p>Enter your website URL and run the check.</p>
+          </div>
+        </div>
+        <form
+          id="cookieForm"
+          class="link-checker-form"
+          autocomplete="off"
+        >
+          <div class="input-group">
+            <span
+              class="input-group-icon"
+              aria-hidden="true"
+            >
+              <img
+                id="siteFavicon"
+                class="site-favicon"
+                alt="site favicon"
+                src="./assets/icons/internet.svg"
+                width="24"
+                height="24"
+                loading="lazy"
+              />
+            </span>
+
+            <input
+              class="form-control"
+              id="url_to_scan"
+              name="url"
+              type="text"
+              placeholder="Enter your website URL"
+            />
+
+            <button
+              class="btn pri-xl-btn"
+              type="submit"
+              id="scan_cookie"
+            >
+              Check link
+            </button>
+          </div>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input
+                type="radio"
+                id="indexation"
+                name="check-type"
+                value="indexation"
+                checked
+              />
+              <label for="indexation">Indexation</label>
+            </div>
+
+            <div class="radio-item">
+              <input
+                type="radio"
+                id="semantics"
+                name="check-type"
+                value="semantics"
+              />
+              <label for="semantics">Semantics</label>
+            </div>
+          </div>
+        </form>
+        <span class="promt-block">
+          <img
+            src="./assets/icons/warn.svg"
+            alt="warning"
+            width="18"
+            height="18"
+          />
+          <p>Unfortunately, some websites may fail verification due to their security measures.</p>
+        </span>
+        <section class="result-section"></section>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      type="module"
+      defer
+      src="./scripts/main.js"
+    ></script>
+  </body>
+</html>

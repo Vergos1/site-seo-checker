@@ -1,0 +1,236 @@
+@use "./reset.scss";
+@use "./normalize.scss";
+@use "./variables.scss" as variables;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+  background: variables.$color-ui-bg;
+}
+
+html,
+body,
+main {
+  height: 100%;
+  width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li,
+ul,
+ol {
+  pointer-events: none;
+  user-select: none;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: variables.$color-ui-text;
+  margin: 0;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 1.5;
+  font-style: normal;
+  font-weight: 600;
+}
+
+p,
+span,
+a,
+input,
+label {
+  color: variables.$color-ui-text-muted;
+}
+
+input {
+  height: 100%;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(variables.$color-ui-primary, 0.2);
+}
+input:focus {
+  box-shadow: 0 0 0 2px rgba(variables.$color-ui-primary, 0.2);
+}
+button:focus {
+  box-shadow: 0 0 0 2px rgba(variables.$color-ui-primary, 0.2);
+}
+
+a,
+button:not(:disabled):not(.disabled),
+button {
+  cursor: pointer;
+}
+.link-checker-form {
+  width: min(960px, calc(100% - 32px));
+}
+.input-group {
+  width: 100%;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+
+  background: variables.$color-ui-surface;
+  border: 1px solid variables.$color-ui-border;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.input-group-icon {
+  padding: 0 0 0 16px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.site-favicon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+}
+
+.input-group .form-control {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  color: variables.$color-ui-text;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.input-group .btn {
+  height: 100%;
+  border: none;
+  border-left: 1px solid variables.$color-ui-border;
+  padding: 0 28px;
+
+  background: variables.$color-ui-primary;
+  color: variables.$color-ui-primary-contrast;
+  font-weight: 600;
+  font-size: 1.125rem;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.input-group .btn:hover {
+  background: variables.$color-ui-primary-hover;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.content-section {
+  min-width: calc(100% - 64px);
+  max-width: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.promt-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radio-item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border-radius: 999px;
+  border: 2px solid rgba(variables.$color-ui-text, 0.35);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.radio-item input[type="radio"]:hover {
+  border-color: rgba(variables.$color-ui-primary, 0.6);
+}
+
+.radio-item input[type="radio"]:focus-visible {
+  outline: none;
+  border-color: variables.$color-ui-primary;
+  box-shadow: 0 0 0 4px rgba(variables.$color-ui-primary, 0.18), 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.radio-item input[type="radio"]:checked {
+  border-color: variables.$color-ui-primary;
+  background: radial-gradient(circle at 50% 50%, variables.$color-ui-primary 0 4px, transparent 5px),
+    rgba(variables.$color-ui-primary, 0.12);
+}
+
+.radio-item label {
+  cursor: pointer;
+  user-select: none;
+  color: variables.$color-ui-text;
+}
+
+.radio-item input[type="radio"]:checked + label {
+  color: variables.$color-ui-primary;
+}

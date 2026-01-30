@@ -1,0 +1,33 @@
+/* client/styles/variables.scss */
+
+/* FIX: методология Tokens-first.
+   - $color-*-###  = палитра (сырьё)
+   - $color-ui-*   = семантика UI (то, что используем в стилях)
+*/
+
+/* ===== Palette (примерные значения, ЗАМЕНИ НА СВОИ) ===== */
+$color-brand-600: #2563eb; // основной синий (кнопка)
+$color-brand-700: #1d4ed8; // hover/active
+
+$color-slate-900: #27283c; // основной текст
+$color-slate-600: #3d3e50; // вторичный текст
+
+$color-slate-50: #f1f6fd; // общий фон
+$color-white: #ffffff; // поверхность/карточки
+
+$color-gray-200: #e5e7eb; // бордер
+$color-gray-300: #d1d5db; // бордер сильнее
+
+/* ===== Semantic UI tokens (используй ЭТО в компонентах) ===== */
+$color-ui-bg: $color-slate-50;
+$color-ui-surface: $color-white;
+
+$color-ui-text: $color-slate-900;
+$color-ui-text-muted: $color-slate-600;
+
+$color-ui-border: $color-gray-200;
+$color-ui-border-strong: $color-gray-300;
+
+$color-ui-primary: $color-brand-600;
+$color-ui-primary-hover: $color-brand-700;
+$color-ui-primary-contrast: $color-white;
