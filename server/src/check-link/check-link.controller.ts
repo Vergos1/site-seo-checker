@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Query,
-  UsePipes,
-  ValidationPipe,
-} from "@nestjs/common";
+import { Body, Controller, Get, Post, Query, UsePipes, ValidationPipe } from "@nestjs/common";
 import { CheckLinkDto } from "./dto/check-link.dto";
 import { CheckLinkService } from "./check-link.service";
 import { AuditEnum } from "./types/audit";
