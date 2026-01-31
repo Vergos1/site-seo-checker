@@ -4,7 +4,9 @@ import { checkLink, getChecksHistory } from "./api/checks/index.js";
 
 const formInput = document.getElementById("check-input");
 const checkButton = document.getElementById("check-button");
-const resultSection = document.getElementById("result-table");
+const resultHistorySection = document.getElementById("result-table");
+const searchResultBlock = document.getElementById("search-result");
+const promptBlock = document.getElementById("prompt-block");
 const radioButtons = document.querySelectorAll("input[name='check-type']");
 const form = document.getElementById("link-checker-form");
 
@@ -15,6 +17,10 @@ const BUTTON_TEXT = {
 
 function isInputValid(value) {
   return value.trim().length >= 6;
+}
+
+function setPromptState({ visible }) {
+  promptBlock.classList.toggle("hidden", !visible);
 }
 
 function setButtonState({ disabled, text }) {
@@ -70,7 +76,7 @@ function renderHistoryRow(item, index) {
 }
 
 function renderHistoryTable(items) {
-  resultSection.innerHTML = "";
+  resultHistorySection.innerHTML = "";
 
   const fragment = document.createDocumentFragment();
 
@@ -80,7 +86,7 @@ function renderHistoryTable(items) {
     fragment.appendChild(renderHistoryRow(item));
   });
 
-  resultSection.appendChild(fragment);
+  resultHistorySection.appendChild(fragment);
 }
 
 async function renderHistory() {
@@ -95,6 +101,27 @@ async function renderHistory() {
   } catch (error) {
     console.error("History load error:", error);
   }
+}
+
+function renderResultPreview(result) {
+  const { item, score } = result;
+
+  searchResultBlock.innerHTML = `
+    <div class="result-item">
+  <div class="score score--bad">0</div>
+
+  <div class="content">
+    <a href="https://lol.com" target="_blank" class="link">
+      https://lol.com
+    </a>
+
+    <div class="meta">
+      <span class="badge badge--semantic">Semantics</span>
+      <span class="date">30 Jan 2026 · 23:37</span>
+    </div>
+  </div>
+</div>
+  `;
 }
 
 setButtonState({
@@ -132,9 +159,13 @@ checkButton.addEventListener("click", async (e) => {
     const checkedType = [...radioButtons].find((i) => i.checked)?.value;
 
     const resultData = await checkLink(formInput.value, checkedType);
+
+    setPromptState({ visible: false });
+    renderResultPreview(resultData);
     renderHistory();
   } catch (err) {
     const message = err?.response?.data?.message ?? "Something went wrong";
+    setPromptState({ visible: false });
     renderError(message);
   } finally {
     setButtonState({
