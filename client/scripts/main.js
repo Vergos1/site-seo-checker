@@ -75,7 +75,7 @@ function renderResultPreview(result) {
         rel="noopener noreferrer"
         class="result-card__btn"
       >
-        Open in new tab
+        Open link in new tab
       </a>
     </div>
   `;
