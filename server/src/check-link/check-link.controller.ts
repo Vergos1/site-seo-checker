@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Query, UsePipes, ValidationPipe } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  ParseEnumPipe,
+  Post,
+  Query,
+  UsePipes,
+  ValidationPipe,
+} from "@nestjs/common";
 import { CheckLinkDto } from "./dto/check-link.dto";
 import { CheckLinkService } from "./check-link.service";
 import { AuditEnum } from "./types/audit";
@@ -14,7 +23,10 @@ export class CheckLinkController {
 
   @Post()
   @UsePipes(new ValidationPipe())
-  checkLinkByPath(@Query("type") type: AuditEnum, @Body() dto: CheckLinkDto) {
+  checkLinkByPath(
+    @Query("type", new ParseEnumPipe(AuditEnum)) type: AuditEnum,
+    @Body() dto: CheckLinkDto,
+  ) {
     const auditType = type ?? AuditEnum.INDEXING;
     return this.checkLinkService.checkLink(auditType, dto);
   }
