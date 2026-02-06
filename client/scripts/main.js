@@ -49,28 +49,33 @@ function renderError(message) {
 }
 
 function renderResultPreview(result) {
-  const { item, score, type } = result;
+  const { item, score } = result;
 
   const searchResult = document.getElementById("search-result");
   const scoreLevel = getScoreLevel(score);
-  const typeLabel = type === "indexing" ? "Indexing" : "Semantic";
+  const typeLabel = item.type === "indexing" ? "Indexing" : "Semantic";
 
   searchResult.innerHTML = `
     <div class="result-card">
-      <span class="result-card__type result-card__type--${type}">
-        ${typeLabel}
-      </span>
+      <span class="result-card__type result-card__type--${item.type}">${typeLabel}</span>
 
-      <div class="score-gauge score-gauge--${scoreLevel}" style="--progress: ${score}">
-        <div class="score-gauge__arc"></div>
-        <div class="score-gauge__content">
-          <span class="score-gauge__value">${score}%</span>
-          <span class="score-gauge__label">Progress</span>
+      <div
+        class="score-circle score-circle--${scoreLevel}"
+        style="--progress: ${score}"
+      >
+        <div class="score-circle__inner">
+          <span class="score-circle__value">${score}%</span>
+          <span class="score-circle__label">Score</span>
         </div>
       </div>
 
-      <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="result-card__btn">
-        Details
+      <a
+        href="${item.link}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="result-card__btn"
+      >
+        Open in new tab
       </a>
     </div>
   `;
