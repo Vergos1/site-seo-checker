@@ -1,0 +1,72 @@
+.result-card {
+  width: 280px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.result-card__type {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.result-card__type--indexing {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.result-card__type--semantic {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.score-circle {
+  --size: 160px;
+  --thickness: 12px;
+  --color: #16a34a;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(var(--color) 0%, var(--color) calc(var(--progress) * 1%), #e5e7eb calc(var(--progress) * 1%), #e5e7eb 100%);
+}
+
+.score-circle__inner {
+  width: calc(100% - var(--thickness) * 2);
+  height: calc(100% - var(--thickness) * 2);
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle__value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #27283c;
+}
+
+.score-circle__label {
+  font-size: 14px;
+  color: #3d3e50;
+}
+
+.result-card__btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 999px;
+  text-align: center;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}/*# sourceMappingURL=result-card.css.map */

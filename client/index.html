@@ -214,11 +214,30 @@
         <div
           id="search-result"
           class="search-result"
-        ></div>
-        <div
-          id="result-table"
-          class="result-table"
-        ></div>
+        >
+          <div class="result-card">
+            <span class="result-card__type result-card__type--indexing">Indexing</span>
+
+            <div
+              class="score-circle score-circle--good"
+              style="--progress: 70"
+            >
+              <div class="score-circle__inner">
+                <span class="score-circle__value">70%</span>
+                <span class="score-circle__label">Progress</span>
+              </div>
+            </div>
+
+            <a
+              href="https://example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="result-card__btn"
+            >
+              Details
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 

@@ -1,0 +1,87 @@
+@use "../variables.scss" as variables;
+
+.result-card {
+  width: 280px;
+  padding: 20px;
+  border-radius: 20px;
+  background: variables.$color-ui-surface;
+  border: 1px solid variables.$color-ui-border;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.result-card__type {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+
+  &--indexing {
+    background: variables.$color-ui-score-mid-bg;
+    color: variables.$color-ui-score-mid;
+  }
+
+  &--semantic {
+    background: variables.$color-ui-score-good-bg;
+    color: variables.$color-ui-score-good;
+  }
+}
+
+.score-circle {
+  --size: 160px;
+  --thickness: 12px;
+  --color: #{variables.$color-ui-score-good}; // fallback
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  background: conic-gradient(
+    var(--color) 0%,
+    var(--color) calc(var(--progress) * 1%),
+    variables.$color-gray-200 calc(var(--progress) * 1%),
+    variables.$color-gray-200 100%
+  );
+}
+
+.score-circle__inner {
+  width: calc(100% - var(--thickness) * 2);
+  height: calc(100% - var(--thickness) * 2);
+  border-radius: 50%;
+  background: variables.$color-ui-surface;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle__value {
+  font-size: 32px;
+  font-weight: 600;
+  color: variables.$color-ui-text;
+}
+
+.score-circle__label {
+  font-size: 14px;
+  color: variables.$color-ui-text-muted;
+}
+
+.result-card__btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 999px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    variables.$color-ui-primary,
+    variables.$color-ui-primary-hover
+  );
+  color: variables.$color-ui-primary-contrast;
+  font-weight: 600;
+  text-decoration: none;
+}

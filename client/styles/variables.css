@@ -1,8 +1,1 @@
-@charset "UTF-8";
-/* client/styles/variables.scss */
-/* FIX: методология Tokens-first.
-   - $color-*-###  = палитра (сырьё)
-   - $color-ui-*   = семантика UI (то, что используем в стилях)
-*/
-/* ===== Palette (примерные значения, ЗАМЕНИ НА СВОИ) ===== */
-/* ===== Semantic UI tokens (используй ЭТО в компонентах) ===== *//*# sourceMappingURL=variables.css.map */
+/*# sourceMappingURL=variables.css.map */

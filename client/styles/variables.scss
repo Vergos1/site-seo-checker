@@ -1,26 +1,25 @@
-/* client/styles/variables.scss */
+// Palette
+$color-brand-600: #2563eb;
+$color-brand-700: #1d4ed8;
 
-/* FIX: методология Tokens-first.
-   - $color-*-###  = палитра (сырьё)
-   - $color-ui-*   = семантика UI (то, что используем в стилях)
-*/
+$color-slate-900: #27283c;
+$color-slate-600: #3d3e50;
+$color-slate-50: #f1f6fd;
+$color-white: #ffffff;
 
-/* ===== Palette (примерные значения, ЗАМЕНИ НА СВОИ) ===== */
-$color-brand-600: #2563eb; // основной синий (кнопка)
-$color-brand-700: #1d4ed8; // hover/active
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
 
-$color-slate-900: #27283c; // основной текст
-$color-slate-600: #3d3e50; // вторичный текст
+$color-red-500: #ef4444;
 
-$color-slate-50: #f1f6fd; // общий фон
-$color-white: #ffffff; // поверхность/карточки
+$color-score-bad: #dc2626;
+$color-score-bad-bg: #fee2e2;
+$color-score-mid: #2563eb;
+$color-score-mid-bg: #dbeafe;
+$color-score-good: #16a34a;
+$color-score-good-bg: #dcfce7;
 
-$color-gray-200: #e5e7eb; // бордер
-$color-gray-300: #d1d5db; // бордер сильнее
-
-$color-red-500: #ef4444; // ошибка
-
-/* ===== Semantic UI tokens (используй ЭТО в компонентах) ===== */
+// Semantic UI tokens
 $color-ui-bg: $color-slate-50;
 $color-ui-surface: $color-white;
 
@@ -35,3 +34,10 @@ $color-ui-primary-hover: $color-brand-700;
 $color-ui-primary-contrast: $color-white;
 
 $color-ui-error: $color-red-500;
+
+$color-ui-score-bad: $color-score-bad;
+$color-ui-score-bad-bg: $color-score-bad-bg;
+$color-ui-score-mid: $color-score-mid;
+$color-ui-score-mid-bg: $color-score-mid-bg;
+$color-ui-score-good: $color-score-good;
+$color-ui-score-good-bg: $color-score-good-bg;
