@@ -1,32 +1,69 @@
-## SiteSeoChecker
+# Site SEO Checker
 
-**SiteSeoChecker** — сервис для быстрой проверки SEO/контент‑сигналов страницы по URL.
+SEO audit tool — analyze any webpage's indexing and semantic signals with score.
 
-Проект состоит из двух частей — **frontend** и **backend**.
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white)
 
-### Frontend (`client/`)
+## About
 
-Статический клиент на **HTML/CSS/JS** (без сборщика), который:
+Site SEO Checker is a full-stack web service for auditing SEO and content signals of any webpage by URL. Enter a URL, choose an audit type and get a scored report with indexing or semantic analysis. All checks are stored in history.
 
-- показывает форму ввода URL;
-- позволяет выбрать тип аудита (**indexing** / **semantic**);
-- отправляет запрос на API и отображает результат;
-- запрашивает и отображает историю проверок.
+## Features
 
-**Комментарий (важно):** так как сборщика нет, импорты в браузере должны указывать на **реальные `.js` файлы**, а `axios` подключается через CDN и доступен как `globalThis.axios`.
+- **URL audit** — enter any URL to run an SEO check
+- **Two audit types** — indexing audit and semantic audit
+- **Score** — calculated score based on parsed HTML signals
+- **History** — all previous checks stored and displayed
+- **HTML parsing** — page downloaded and parsed via Cheerio
+- **REST API** — clean NestJS endpoints with query and path param support
 
-### Backend (`server/`)
+## Pages
 
-API на **NestJS + TypeORM + PostgreSQL**, которое:
+| Page | Description |
+|---|---|
+| **Home** | URL input form, audit type selector, result card and check history |
 
-- принимает URL страницы;
-- скачивает HTML (через `HttpService`);
-- парсит HTML через `cheerio` и собирает сигналы (SEO/контент);
-- считает score по выбранному типу аудита (**indexing** / **semantic**);
-- хранит историю проверок в PostgreSQL.
+## API Endpoints
 
-**Основные эндпоинты:**
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/check-link/history` | Get all previous checks |
+| `POST` | `/check-link?type=indexing\|semantic` | Run audit with type in query |
+| `POST` | `/check-link/indexing\|semantic` | Run audit with type in path |
 
-- `GET /check-link/history` — история проверок
-- `POST /check-link?type=indexing|semantic` — запуск проверки (тип в query)
-- `POST /check-link/indexing|semantic` — запуск проверки (тип в path)
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| HTML / SCSS / JS | Frontend (no bundler, Axios via CDN) |
+| NestJS | Backend framework |
+| TypeScript | Type safety |
+| TypeORM | Database ORM |
+| PostgreSQL | Check history storage |
+| Cheerio | HTML parsing |
+| HttpService | Page downloading |
+
+## Getting Started
+
+```bash
+# Install server dependencies
+cd server
+npm install
+
+# Start backend
+npm run start:dev
+
+# Open client
+open client/index.html
+```
+
+> The frontend uses no bundler — Axios is loaded via CDN as `globalThis.axios`. JS imports must point to real `.js` files.
+
+## Author
+
+Designed and developed by **Ihor Yanchuk**
+[Portfolio](https://github.com/Vergos1) · [GitHub](https://github.com/Vergos1)
